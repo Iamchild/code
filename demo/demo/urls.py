@@ -14,13 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from users.views import index_view
+from django.urls import path, include
+# from users.views import index_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # 指定请求路径==>视图函数
     # django进行路径匹配之前，会把请求路径的顶头的根/去掉
-    path('index/',index_view),
+    # path('index/',index_view),
+    # 在总路由中，只匹配前缀，确定对应的子路由
+    # 前缀users/的全部
+    path('users/', include('users.urls')),
+    path('', include('weather.urls')),
 ]

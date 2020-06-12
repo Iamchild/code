@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# 基础目录，方便目录拼接
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -23,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'b2fzm6hpvp)x6kc=ljg6vzk#g=+%yth+$q=0r@%w$lg5nlc4co'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -40,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 加入自己创建的users应用的导包路径写入
-    'users'  # import users
+    'users',  # import users
     # 'users.apps.UsersConfig'  # import users.apps.UsersConfig
+    
+    'weather',
 ]
 
 MIDDLEWARE = [
@@ -108,14 +112,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+# 语言
+LANGUAGE_CODE = 'zh-hans'
+# 设置时区
+TIME_ZONE = 'Asia/Shanghai'
+# 国际化
 USE_I18N = True
-
+# 本地化
 USE_L10N = True
-
+# 设置为True，启动Django的时区功能
+# 体现在：我们往MySQL数据库保存时间数据的时候，会把东八区时间统一转换 为UTC时间
 USE_TZ = True
 
 
